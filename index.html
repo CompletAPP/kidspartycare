@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kids Party Care — Cuido y entretenimiento infantil para eventos exclusivos</title>
+<meta name="description" content="Un mundo aparte para los niños de tus invitados, mientras los adultos disfrutan de la celebración sin límites.">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   KIDS PARTY CARE — Dirección de arte: invitación de boda.
+   Paleta: esmeralda profundo / marfil / oro viejo.
+   Un solo lenguaje de movimiento: curvas lentas, revelados
+   por máscara, cortina teatral, parallax sutil.
+   ============================================================ */
+:root{
+  --ink:#0a1a15;
+  --emerald:#0f3d2e;
+  --emerald-2:#0c2b21;
+  --emerald-hi:#16553f;
+  --ivory:#f4efe4;
+  --ivory-2:#ece5d3;
+  --gold:#c9a34e;
+  --gold-2:#e6cb85;
+  --gold-deep:#8a6a28;
+  --text:#26332c;
+  --muted:#5b6a61;
+  --line:#d8cfb8;
+  --line-ink:rgba(244,239,228,.16);
+  --serif:'Cormorant Garamond',serif;
+  --sans:'Jost',sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);      /* expo-out: entradas suaves */
+  --ease-io:cubic-bezier(.77,0,.18,1);   /* in-out: máscaras y cortinas */
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);font-weight:400;
+  background:var(--ivory);color:var(--text);
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+html.js:not(.ready) body{overflow:hidden} /* bloquea scroll durante la cortina de entrada */
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--serif);font-weight:600;color:inherit}
+[id]{scroll-margin-top:5.5rem}
+::selection{background:var(--gold);color:var(--ink)}
+:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--ivory-2)}
+::-webkit-scrollbar-thumb{background:var(--emerald);border:2px solid var(--ivory-2)}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 6vw}
+.pad{padding:8.5rem 0}
+@media(max-width:700px){.pad{padding:5.5rem 0}}
+
+/* grano de papel, acabado táctil */
+.grain{
+  position:fixed;inset:0;z-index:900;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- tipografía de marca ---------- */
+.eyebrow{
+  font-family:var(--serif);font-style:italic;font-weight:600;
+  font-size:1.25rem;letter-spacing:.08em;color:var(--gold);
+  display:flex;align-items:center;gap:.7em;margin-bottom:1.4rem;
+}
+.eyebrow::before{content:"";width:34px;height:1.5px;background:currentColor}
+.eyebrow.center{justify-content:center;width:max-content;margin-inline:auto}
+
+/* máscara de línea: el texto sube desde un borde invisible */
+.mask{overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
+.js .mask>span{display:block;transform:translateY(114%);transition:transform 1.05s var(--ease-io)}
+.js .mask.in-view>span{transform:none}
+
+/* revelado genérico */
+.js [data-reveal]{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.js [data-reveal].in-view{opacity:1;transform:none}
+.js [data-reveal].d1{transition-delay:.12s}
+.js [data-reveal].d2{transition-delay:.24s}
+.js [data-reveal].d3{transition-delay:.36s}
+
+/* palabras del manifiesto */
+.js [data-words] .w{opacity:.13;transition:opacity .8s var(--ease)}
+.js [data-words].in-view .w{opacity:1}
+
+/* ---------- botones ---------- */
+.btn{
+  position:relative;display:inline-block;overflow:hidden;
+  padding:1.05rem 2.4rem;border:1px solid var(--gold);
+  font:500 .8rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+  transition:color .5s var(--ease),letter-spacing .5s var(--ease);
+}
+.btn::before{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleY(0);transform-origin:bottom;transition:transform .6s var(--ease-io)}
+.btn span{position:relative;z-index:1}
+.btn:hover::before{transform:scaleY(1)}
+.btn:hover{color:var(--gold-2);letter-spacing:.18em}
+.btn-solid{background:var(--gold);color:var(--ink)}
+
+.btn-line{position:relative;padding-bottom:.4rem;font-size:.85rem;letter-spacing:.05em;color:rgba(244,239,228,.8);transition:color .4s}
+.btn-line::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--emerald-hi);transform-origin:right;transition:transform .5s var(--ease-io),background-color .4s}
+.btn-line:hover{color:var(--gold-2)}
+.btn-line:hover::after{transform:scaleX(0)}
+
+/* ---------- cursor personalizado ----------
+   FIX: el cursor nativo SOLO se oculta cuando detectamos un
+   movimiento real de ratón (clase .cursor-on en <html>).
+   Con dedo táctil, o antes del primer movimiento, el puntero
+   del sistema permanece visible: nunca se queda la pantalla
+   sin cursor. */
+.cursor-dot,.cursor-ring{display:none}
+html.fine.cursor-on *{cursor:none!important}
+html.fine.cursor-on .cursor-dot{
+  display:block;position:fixed;top:0;left:0;width:6px;height:6px;margin:-3px 0 0 -3px;
+  border-radius:50%;background:var(--gold);z-index:1300;pointer-events:none;
+}
+html.fine.cursor-on .cursor-ring{
+  display:block;position:fixed;top:0;left:0;width:38px;height:38px;margin:-19px 0 0 -19px;
+  border:1px solid rgba(201,163,78,.65);border-radius:50%;z-index:1299;pointer-events:none;
+  transition:background-color .35s,border-color .35s;
+}
+.cursor-ring.grow{background:rgba(201,163,78,.08);border-color:var(--gold-2)}
+
+/* ============ PRELOADER (cortina de entrada) ============ */
+.pre{display:none}
+.js .pre{display:block;position:fixed;inset:0;z-index:1000}
+.shutter{position:absolute;left:0;width:100%;height:50.5%;background:var(--ink);transition:transform 1.05s var(--ease-io) .05s}
+.s-top{top:0}.s-bot{bottom:0}
+.js.loaded .s-top{transform:translateY(-101%)}
+.js.loaded .s-bot{transform:translateY(101%)}
+.js.loaded .pre{visibility:hidden;transition:visibility 0s 1.25s}
+.pre-inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;transition:opacity .45s ease}
+.js.loaded .pre-inner{opacity:0}
+.pre-mark{color:var(--gold);font-size:1.15rem;opacity:0;animation:preFade .9s ease .2s forwards}
+.pre-word{overflow:hidden}
+.pre-word span{display:block;font:600 clamp(1.7rem,4vw,2.6rem)/1.1 var(--serif);letter-spacing:.04em;color:var(--ivory);transform:translateY(115%);animation:preUp 1.15s var(--ease-io) .4s forwards}
+.pre-sub{font:400 .66rem var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--gold);opacity:0;animation:preFade .9s ease 1.3s forwards}
+.pre-line{width:min(240px,50vw);height:1px;background:rgba(201,163,78,.3);position:relative;overflow:hidden}
+.pre-line::after{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;animation:preBar 2.1s var(--ease-io) .5s forwards}
+@keyframes preUp{to{transform:translateY(0)}}
+@keyframes preFade{to{opacity:1}}
+@keyframes preBar{to{transform:scaleX(1)}}
+
+/* ============ NAV ============ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.6rem 6vw;border-bottom:1px solid transparent;
+  transition:padding .5s var(--ease),background-color .5s var(--ease),border-color .5s,box-shadow .5s;
+}
+nav.scrolled{
+  background:rgba(10,26,21,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  padding:.95rem 6vw;border-color:rgba(201,163,78,.22);box-shadow:0 12px 40px rgba(6,16,12,.25);
+}
+.logo{display:flex;align-items:center;gap:.85rem}
+.logo .mark{width:9px;height:9px;flex:none;border:1px solid var(--gold);transform:rotate(45deg)}
+.logo .word{font:600 1.15rem/1.1 var(--serif);letter-spacing:.04em;color:var(--ivory)}
+.logo .word small{display:block;font:400 .58rem var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-top:.25rem}
+.navlinks{display:flex;align-items:center;gap:2.2rem}
+.navlinks a{position:relative;font-size:.86rem;letter-spacing:.05em;color:rgba(244,239,228,.8);padding-bottom:4px;transition:color .35s}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease-io)}
+.navlinks a:hover{color:var(--ivory)}
+.navlinks a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-cta{border:1px solid var(--gold)!important;color:var(--gold-2)!important;padding:.68rem 1.35rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;overflow:hidden}
+.nav-cta::before{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--ease-io)}
+.nav-cta span{position:relative;z-index:1;transition:color .4s}
+.nav-cta:hover span{color:var(--ink)}
+.nav-cta:hover::before{transform:scaleY(1)}
+.nav-cta::after{display:none}
+.nav-toggle{display:none;position:relative;z-index:210;width:42px;height:42px;background:none;border:0;cursor:pointer}
+.nav-toggle span{position:absolute;left:8px;right:8px;height:1.5px;background:var(--ivory);transition:.45s var(--ease-io)}
+.nav-toggle span:first-child{top:15px}
+.nav-toggle span:last-child{top:23px}
+.nav-toggle.active span:first-child{top:19px;transform:rotate(45deg)}
+.nav-toggle.active span:last-child{top:19px;transform:rotate(-45deg)}
+
+@media(max-width:860px){
+  .navlinks{
+    position:fixed;inset:0 0 0 auto;width:min(80vw,360px);
+    background:var(--emerald-2);border-left:1px solid rgba(201,163,78,.3);
+    flex-direction:column;align-items:flex-start;gap:1.9rem;
+    padding:7rem 2.4rem 3rem;transform:translateX(102%);
+    transition:transform .65s var(--ease-io);
+  }
+  .navlinks.open{transform:translateX(0)}
+  .navlinks a{font-family:var(--serif);font-size:1.7rem;letter-spacing:.02em;opacity:0;transform:translateY(18px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+  .navlinks.open a{opacity:1;transform:none}
+  .navlinks.open a:nth-child(1){transition-delay:.2s}
+  .navlinks.open a:nth-child(2){transition-delay:.26s}
+  .navlinks.open a:nth-child(3){transition-delay:.32s}
+  .navlinks.open a:nth-child(4){transition-delay:.38s}
+  .navlinks.open a:nth-child(5){transition-delay:.44s}
+  .nav-toggle{display:block}
+}
+/* sin JS: menú siempre visible */
+html:not(.js) .nav-toggle{display:none}
+html:not(.js) nav{position:absolute;flex-wrap:wrap;gap:1rem}
+html:not(.js) .navlinks{position:static;transform:none;width:auto;background:transparent;padding:0;flex-wrap:wrap}
+html:not(.js) .navlinks a{opacity:1;transform:none;font-family:var(--sans);font-size:.86rem}
+
+/* ============ HERO — invitación enmarcada ============ */
+.hero{
+  position:relative;min-height:100vh;overflow:hidden;
+  background:radial-gradient(120% 110% at 50% -10%,var(--emerald-hi) 0%,var(--emerald) 48%,#071511 125%);
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:8rem 6vw 7rem;
+}
+.hero-frame{position:absolute;inset:clamp(14px,2.5vw,28px);border:1px solid rgba(201,163,78,.38);pointer-events:none}
+.hero-frame::before{content:"";position:absolute;top:-4.5px;left:50%;width:8px;height:8px;background:var(--emerald);border:1px solid var(--gold);transform:translateX(-50%) rotate(45deg)}
+.js .hero-frame{opacity:0;transform:scale(.985);transition:opacity 1.3s var(--ease) .5s,transform 1.3s var(--ease) .5s}
+.js.ready .hero-frame{opacity:1;transform:none}
+
+.hero-deco{position:absolute;inset:0;pointer-events:none}
+.hero-deco svg{position:absolute;stroke:var(--gold);fill:none;stroke-width:1;opacity:.45}
+.float-a{top:14%;left:8%;width:88px;animation:float 7.5s ease-in-out infinite}
+.float-b{top:62%;left:12%;width:54px;animation:float 9.5s ease-in-out infinite 1s}
+.float-c{top:19%;right:9%;width:68px;animation:float 8.5s ease-in-out infinite .5s}
+.float-d{bottom:13%;right:13%;width:98px;animation:float 10.5s ease-in-out infinite 2s}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-16px) rotate(3deg)}}
+.js .hero-deco{opacity:0;transition:opacity 1.6s ease 1.1s}
+.js.ready .hero-deco{opacity:1}
+
+.hero-content{position:relative;z-index:2;max-width:880px}
+.hero .eyebrow{justify-content:center;width:max-content;margin:0 auto 1.7rem}
+.hero-title{color:var(--ivory);font-size:clamp(2.5rem,7.2vw,5.6rem);line-height:1.06;letter-spacing:.01em}
+.hero-title .hmask{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.js .hmask>span{display:block;transform:translateY(115%);transition:transform 1.1s var(--ease-io)}
+.js.ready .hmask>span{transform:none}
+.hero-title em{font-style:italic;font-weight:500;color:var(--gold-2)}
+.js [data-hero-fade]{opacity:0;transform:translateY(18px)}
+.js.ready [data-hero-fade]{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.hero .sub{color:rgba(244,239,228,.8);font-weight:300;font-size:1.1rem;line-height:1.85;max-width:620px;margin:1.9rem auto 2.7rem}
+.btn-row{display:flex;align-items:center;justify-content:center;gap:2.2rem;flex-wrap:wrap}
+
+.scroll-cue{position:absolute;bottom:2.3rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.7rem;z-index:2}
+.scroll-cue small{font:500 .58rem var(--sans);letter-spacing:.34em;text-transform:uppercase;color:rgba(244,239,228,.65)}
+.scroll-cue .line{width:1px;height:46px;background:linear-gradient(to bottom,var(--gold),transparent);animation:cueLine 2.4s var(--ease-io) infinite}
+@keyframes cueLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.js .scroll-cue{opacity:0;transition:opacity 1s ease 1.35s}
+.js.ready .scroll-cue{opacity:1}
+
+/* ============ CORTINA TEATRAL ============ */
+.curtain-scene{position:relative;height:260vh}
+.curtain-stage{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--ivory);display:flex;align-items:center;justify-content:center}
+.curtain-panel{
+  position:absolute;top:0;bottom:0;width:50.15%;will-change:transform;
+  background:
+    linear-gradient(rgba(0,0,0,.32),rgba(0,0,0,0) 16%,rgba(0,0,0,0) 84%,rgba(0,0,0,.38)),
+    repeating-linear-gradient(90deg,#0b2a20 0px,#0f3529 14px,#0c2d22 30px,#113c2e 46px,#0b2a20 60px);
+  box-shadow:inset 0 0 160px rgba(0,0,0,.5);
+}
+.curtain-panel.left{left:0;border-right:1px solid rgba(201,163,78,.45)}
+.curtain-panel.right{right:0;border-left:1px solid rgba(201,163,78,.45)}
+.curtain-emblem{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 6vw;pointer-events:none;will-change:transform,opacity}
+.emblem-mark{display:block;color:var(--gold);font-size:1.4rem;margin-bottom:1.1rem}
+.curtain-emblem h2{color:var(--ivory);font-style:italic;font-weight:500;font-size:clamp(1.9rem,4.6vw,3rem)}
+.curtain-emblem p{color:rgba(244,239,228,.78);font-weight:300;margin:1rem auto 0;max-width:460px;line-height:1.8}
+.curtain-post{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;opacity:0;color:var(--gold);pointer-events:none}
+.ornament{display:flex;align-items:center;gap:.9rem}
+.ornament .oline{width:56px;height:1px;background:currentColor;opacity:.6}
+.ornament .odiamond{width:7px;height:7px;border:1px solid currentColor;transform:rotate(45deg)}
+/* sin JS o sin motion: banner estático */
+html:not(.js) .curtain-scene,html.no-motion .curtain-scene{height:auto}
+html:not(.js) .curtain-panel,html.no-motion .curtain-panel,
+html:not(.js) .curtain-post,html.no-motion .curtain-post{display:none}
+html:not(.js) .curtain-stage,html.no-motion .curtain-stage{height:auto;min-height:72vh;padding:8rem 6vw}
+
+/* ============ EL DILEMA ============ */
+.problem{background:var(--ivory)}
+.problem .eyebrow{color:var(--gold-deep)}
+.problem-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:6rem;align-items:center}
+.problem h2{font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.18;color:var(--emerald)}
+.problem p{margin-top:1.6rem;line-height:1.85;max-width:48ch;color:var(--text)}
+.quote-panel{position:relative;border-left:1px solid var(--gold);padding-left:2.4rem}
+.quote-panel::before{content:"\201C";position:absolute;top:-3rem;left:-.75rem;font:600 7rem/1 var(--serif);color:rgba(201,163,78,.3)}
+.quote-panel p{font:italic 500 clamp(1.4rem,2.4vw,1.8rem)/1.5 var(--serif);color:var(--emerald);margin:0;max-width:none}
+.quote-panel span{display:block;margin-top:1.3rem;font:500 .7rem var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:860px){.problem-grid{grid-template-columns:1fr;gap:3.5rem}}
+
+/* ============ MARQUEE ============ */
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.5rem 0;background:var(--ivory)}
+.marquee-track{display:flex;width:max-content;animation:marq 38s linear infinite}
+.m-set{display:flex;align-items:center;gap:3.2rem;padding-right:3.2rem}
+.m-set span{font:italic 500 1.45rem var(--serif);color:#7a8a7f;white-space:nowrap}
+.m-set .dia{width:7px;height:7px;flex:none;border:1px solid var(--gold);transform:rotate(45deg)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ============ EL PROCESO ============ */
+.process{background:var(--ivory-2)}
+.process .eyebrow{color:var(--gold-deep)}
+.process-head{max-width:640px}
+.process-head h2{font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.18;color:var(--emerald)}
+.process-track{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:2.6rem;margin-top:4.5rem}
+.process-track::before{content:"";position:absolute;top:23px;left:0;right:0;height:1px;background:var(--gold);opacity:.5}
+.js .process-track::before{transform:scaleX(0);transform-origin:left;transition:transform 1.8s var(--ease-io) .25s}
+.js .process-track.in-view::before{transform:scaleX(1)}
+.step{position:relative}
+.step::before{content:attr(data-n);position:absolute;top:-2.3rem;left:-1rem;font:italic 600 6.2rem/1 var(--serif);color:rgba(15,61,46,.07);pointer-events:none}
+.step-num{position:relative;z-index:1;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold-deep);background:var(--ivory-2);display:flex;align-items:center;justify-content:center;font:italic 600 1rem var(--serif);color:var(--gold-deep)}
+.step h3{margin-top:1.5rem;font-size:1.25rem;color:var(--emerald)}
+.step p{margin-top:.7rem;font-size:.93rem;line-height:1.75;color:var(--muted)}
+@media(max-width:860px){
+  .process-track{grid-template-columns:1fr;gap:2.4rem}
+  .process-track::before{display:none}
+}
+
+/* ============ EL SERVICIO — filas editoriales ============ */
+.services{background:var(--emerald);color:var(--ivory)}
+.services .eyebrow{color:var(--gold-2)}
+.services-head{max-width:640px;margin-bottom:4rem}
+.services-head h2{color:var(--ivory);font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.18}
+.svc{border-top:1px solid var(--line-ink)}
+.svc:last-child{border-bottom:1px solid var(--line-ink)}
+.svc-in{display:flex;gap:2.2rem;align-items:flex-start;padding:2.7rem 0;transition:padding-left .55s var(--ease-io)}
+.svc:hover .svc-in{padding-left:1.3rem}
+.svc .icon{flex:0 0 42px;margin-top:.5rem}
+.svc .icon svg{width:100%;height:auto;stroke:var(--gold);fill:none;stroke-width:1.1}
+.svc .s-body{flex:1;min-width:0}
+.svc .s-top{display:flex;align-items:baseline;gap:1.3rem}
+.svc .num{font:italic 500 1rem var(--serif);color:var(--gold)}
+.svc h3{font-size:clamp(1.5rem,2.4vw,2.05rem);line-height:1.15;transition:color .45s}
+.svc:hover h3{color:var(--gold-2)}
+.svc .dia{width:8px;height:8px;border:1px solid var(--gold);transform:rotate(45deg) translateX(-8px);opacity:0;margin-left:auto;align-self:center;flex:none;transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.svc:hover .dia{opacity:1;transform:rotate(45deg) translateX(0)}
+.svc p{margin-top:.9rem;max-width:60ch;font-weight:300;line-height:1.8;color:rgba(244,239,228,.75)}
+@media(max-width:700px){.svc .dia{display:none}}
+
+/* ============ PARA QUIÉN ============ */
+.audience{background:var(--ivory-2)}
+.audience .eyebrow{color:var(--gold-deep)}
+.audience-head{text-align:center;max-width:640px;margin:0 auto 4rem}
+.audience-head h2{font-size:clamp(1.9rem,3.2vw,2.6rem);color:var(--emerald)}
+.audience-row{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.aud-item{padding:3rem 2.2rem;border-right:1px solid var(--line);transition:background-color .5s}
+.aud-item:last-child{border-right:0}
+.aud-item:hover{background:rgba(255,255,255,.45)}
+.aud-item .num{font:italic 600 1.05rem var(--serif);color:var(--gold-deep)}
+.aud-item .num::after{content:"";display:block;width:26px;height:1px;background:var(--gold);margin-top:.6rem;transition:width .5s var(--ease-io)}
+.aud-item:hover .num::after{width:52px}
+.aud-item h3{margin-top:1.1rem;font-size:1.35rem;color:var(--emerald);transition:color .4s}
+.aud-item:hover h3{color:var(--gold-deep)}
+.aud-item p{margin-top:.7rem;font-size:.94rem;line-height:1.75;color:var(--muted)}
+@media(max-width:780px){
+  .audience-row{grid-template-columns:1fr;border-top:0}
+  .aud-item{border-right:0;border-top:1px solid var(--line)}
+}
+
+/* ============ LA EXPERIENCIA — galería ============ */
+.gallery{background:var(--ivory)}
+.gallery .eyebrow{color:var(--gold-deep)}
+.gallery-head{max-width:640px;margin-bottom:3.6rem}
+.gallery-head h2{font-size:clamp(1.9rem,3.2vw,2.7rem);line-height:1.2;color:var(--emerald)}
+.gallery-head p{margin-top:1.2rem;line-height:1.8;color:var(--text)}
+.moodgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;align-items:start}
+@media(min-width:861px){.mood:nth-child(2){margin-top:3.4rem}}
+.frame{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--ivory-2);border:1px solid rgba(201,163,78,.5)}
+.js [data-clip] .frame{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s var(--ease-io)}
+.js [data-clip].in-view .frame{clip-path:inset(0 0 0 0)}
+.plx{position:absolute;inset:-9% 0;will-change:transform}
+.plx img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.03)}
+.js [data-clip] img{transform:scale(1.3);transition:transform 1.4s var(--ease-io)}
+.js [data-clip].in-view img{transform:scale(1);transition:transform .9s var(--ease)}
+.js [data-clip].in-view:hover img{transform:scale(1.05)}
+html:not(.js) .mood:hover img{transform:scale(1.05)}
+.cap{display:flex;align-items:center;gap:.8rem;margin-top:1rem;font:italic 500 1.15rem var(--serif);color:var(--emerald)}
+.cap::before{content:"";width:22px;height:1px;background:var(--gold);flex:none}
+.js [data-clip] .cap{opacity:0;transform:translateY(12px);transition:opacity .7s var(--ease) .55s,transform .7s var(--ease) .55s}
+.js [data-clip].in-view .cap{opacity:1;transform:none}
+@media(max-width:860px){.moodgrid{grid-template-columns:1fr;gap:2.4rem}.mood .frame{aspect-ratio:16/11}}
+
+/* ============ MANIFIESTO ============ */
+.manifesto{background:var(--ink);color:var(--ivory);text-align:center}
+.manifesto .wrap{max-width:860px}
+.manifesto .mark{display:block;color:var(--gold);font-size:1.9rem;margin-bottom:1.8rem}
+.manifesto p[data-words]{font:italic 500 clamp(1.6rem,3.4vw,2.5rem)/1.5 var(--serif);color:var(--ivory)}
+.manifesto .ornament{margin-top:2.6rem;color:var(--gold);justify-content:center}
+
+/* ============ CTA / CONTACTO ============ */
+.cta{background:radial-gradient(110% 100% at 50% -10%,var(--emerald-hi) 0%,var(--emerald) 52%,#0b3025 100%);color:var(--ivory);text-align:center}
+.cta .eyebrow{color:var(--gold-2)}
+.cta-frame{position:relative;border:1px solid rgba(201,163,78,.4);padding:clamp(3.5rem,9vw,6.5rem) clamp(1.5rem,6vw,4rem)}
+.cnr{position:absolute;width:8px;height:8px;border:1px solid var(--gold);background:var(--emerald);transform:rotate(45deg)}
+.c1{top:-4.5px;left:-4.5px}.c2{top:-4.5px;right:-4.5px}.c3{bottom:-4.5px;left:-4.5px}.c4{bottom:-4.5px;right:-4.5px}
+.cta h2{color:var(--ivory);font-size:clamp(2rem,4vw,2.9rem)}
+.cta p{max-width:52ch;margin:1.4rem auto 2.6rem;font-weight:300;line-height:1.85;color:rgba(244,239,228,.78)}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink);color:rgba(244,239,228,.72);padding:4rem 6vw 1.8rem}
+.foot-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.6rem;padding-bottom:3rem;border-bottom:1px solid rgba(244,239,228,.12)}
+.foot-links{display:flex;gap:1.8rem;flex-wrap:wrap}
+.foot-links a{position:relative;font-size:.85rem;letter-spacing:.04em;padding-bottom:3px;transition:color .35s}
+.foot-links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease-io)}
+.foot-links a:hover{color:var(--gold-2)}
+.foot-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.foot-word{overflow:hidden;padding:3rem 0 2rem}
+.foot-word span{display:block;text-align:center;white-space:nowrap;font:600 clamp(3rem,12.5vw,11.5rem)/1 var(--serif);letter-spacing:.02em;color:rgba(244,239,228,.07);user-select:none}
+.foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;padding-top:1.4rem;border-top:1px solid rgba(244,239,228,.12);font-size:.75rem;letter-spacing:.06em;color:#7d8f85}
+
+/* ============ ACCESIBILIDAD ============ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important}
+  .pre{display:none!important}
+  .js [data-reveal],.js [data-hero-fade],.js .hero-frame,.js .hero-deco,.js .scroll-cue{opacity:1!important;transform:none!important}
+  .js .mask>span,.js .hmask>span{transform:none!important}
+  .js [data-clip] .frame{clip-path:none!important}
+  .js [data-clip] img,.js [data-clip] .cap{transform:none!important;opacity:1!important}
+  .js [data-words] .w{opacity:1!important}
+  .cursor-dot,.cursor-ring{display:none!important}
+  .marquee-track{animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<!-- Preloader: cortina de entrada -->
+<div class="pre" id="pre" aria-hidden="true">
+  <div class="shutter s-top"></div>
+  <div class="shutter s-bot"></div>
+  <div class="pre-inner">
+    <span class="pre-mark">✦</span>
+    <div class="pre-word"><span>Kids Party Care</span></div>
+    <span class="pre-sub">cuido &amp; entretenimiento</span>
+    <div class="pre-line"></div>
+  </div>
+</div>
+
+<nav id="mainNav">
+  <a class="logo" href="#hero">
+    <span class="mark"></span>
+    <span class="word">Kids Party Care<small>cuido &amp; entretenimiento</small></span>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+  <div class="navlinks" id="navLinks">
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#para-quien">Para quién</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#contacto" class="nav-cta"><span>Reservar consulta</span></a>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="hero">
+  <div class="hero-deco" id="heroDeco" aria-hidden="true">
+    <svg class="float-a" viewBox="0 0 100 140"><ellipse cx="50" cy="45" rx="34" ry="42"/><path d="M50 87 L50 130 M50 130 L42 138 M50 130 L58 138"/></svg>
+    <svg class="float-b" viewBox="0 0 100 140"><ellipse cx="50" cy="45" rx="30" ry="38"/><path d="M50 83 L50 125"/></svg>
+    <svg class="float-c" viewBox="0 0 100 140"><ellipse cx="50" cy="45" rx="32" ry="40"/><path d="M50 85 L50 128 M50 128 L44 136"/></svg>
+    <svg class="float-d" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30"/><path d="M50 20 L50 4 M50 96 L50 80 M20 50 L4 50 M96 50 L80 50"/></svg>
+  </div>
+  <div class="hero-frame" aria-hidden="true"></div>
+  <div class="hero-content" id="heroInner">
+    <p class="eyebrow" data-hero-fade style="transition-delay:.45s">para bodas y celebraciones sin límites</p>
+    <h1 class="hero-title">
+      <span class="hmask"><span style="transition-delay:.55s">Los niños, felices.</span></span>
+      <span class="hmask"><span style="transition-delay:.7s">Los adultos, <em>libres</em>.</span></span>
+    </h1>
+    <p class="sub" data-hero-fade style="transition-delay:.9s">Diseñamos un espacio de cuido y entretenimiento exclusivo para los niños de tus invitados, para que ningún padre tenga que elegir entre asistir a tu evento o cuidar a sus hijos.</p>
+    <div class="btn-row" data-hero-fade style="transition-delay:1.05s">
+      <a href="#contacto" class="btn btn-solid"><span>Conversemos de tu evento</span></a>
+      <a href="#como-funciona" class="btn-line"><span>Ver cómo funciona</span></a>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><small>desliza</small><span class="line"></span></div>
+</header>
+
+<!-- ===================== CORTINA (momento firma) ===================== -->
+<section class="curtain-scene" id="curtainScene">
+  <div class="curtain-stage">
+    <div class="curtain-post" id="curtainPost" aria-hidden="true">
+      <div class="ornament"><span class="oline"></span><span class="odiamond"></span><span class="oline"></span></div>
+    </div>
+    <div class="curtain-emblem" id="curtainEmblem">
+      <div data-reveal>
+        <span class="emblem-mark">✦</span>
+        <h2>Un mundo, aparte.</h2>
+        <p>A un pasillo de distancia de tu celebración, para que cada niño viva la suya.</p>
+      </div>
+    </div>
+    <div class="curtain-panel left" id="panelLeft"></div>
+    <div class="curtain-panel right" id="panelRight"></div>
+  </div>
+</section>
+
+<!-- ===================== PROBLEMA ===================== -->
+<section class="problem pad" id="problema">
+  <div class="wrap problem-grid">
+    <div>
+      <p class="eyebrow" data-reveal>el dilema</p>
+      <h2 class="mask" style="margin-top:1.2rem"><span>Un evento sin niños... también es un evento sin sus padres.</span></h2>
+      <p data-reveal class="d1">Muchas parejas y anfitriones optan por celebraciones "solo adultos" para cuidar la elegancia de la noche. El resultado, casi siempre, es que las familias con hijos pequeños simplemente no llegan. Kids Party Care existe para que esa decisión deje de ser necesaria.</p>
+    </div>
+    <div class="quote-panel d2" data-reveal>
+      <p>"No se trata de esconder a los niños. Se trata de darles una fiesta a su altura, mientras la tuya sigue sin interrupciones."</p>
+      <span>La filosofía Kids Party Care</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MARQUEE ===================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="m-set">
+      <span>un mundo aparte</span><i class="dia"></i>
+      <span>cuido &amp; entretenimiento</span><i class="dia"></i>
+      <span>fiestas completas</span><i class="dia"></i>
+      <span>todas las edades</span><i class="dia"></i>
+      <span>cada una a su manera</span><i class="dia"></i>
+    </div>
+    <div class="m-set">
+      <span>un mundo aparte</span><i class="dia"></i>
+      <span>cuido &amp; entretenimiento</span><i class="dia"></i>
+      <span>fiestas completas</span><i class="dia"></i>
+      <span>todas las edades</span><i class="dia"></i>
+      <span>cada una a su manera</span><i class="dia"></i>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CÓMO FUNCIONA ===================== -->
+<section class="process pad" id="como-funciona">
+  <div class="wrap">
+    <div class="process-head">
+      <p class="eyebrow" data-reveal>el proceso</p>
+      <h2 class="mask" style="margin-top:1.2rem"><span>De la idea a la fiesta, en cuatro pasos.</span></h2>
+    </div>
+    <div class="process-track" data-reveal>
+      <div class="step" data-n="01">
+        <div class="step-num">01</div>
+        <h3>Cuéntanos tu evento</h3>
+        <p>Nos escribes con la fecha, el lugar, y cuántos niños y de qué edades esperas recibir.</p>
+      </div>
+      <div class="step" data-n="02">
+        <div class="step-num">02</div>
+        <h3>Diseñamos la propuesta</h3>
+        <p>Armamos el paquete de cuido y entretenimiento a la medida de tu celebración, con el personal y las actividades adecuadas.</p>
+      </div>
+      <div class="step" data-n="03">
+        <div class="step-num">03</div>
+        <h3>Coordinamos la logística</h3>
+        <p>Alineamos horarios y espacio con tu wedding planner, agencia o venue, sin que tengas que preocuparte por los detalles.</p>
+      </div>
+      <div class="step" data-n="04">
+        <div class="step-num">04</div>
+        <h3>El día del evento</h3>
+        <p>Nuestro equipo llega antes que tus invitados y se encarga de todo, para que tú solo tengas que disfrutar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICIOS ===================== -->
+<section class="services pad" id="servicios">
+  <div class="wrap">
+    <div class="services-head">
+      <p class="eyebrow" data-reveal>el servicio</p>
+      <h2 class="mask" style="margin-top:1.2rem"><span>Un mundo aparte, a un pasillo de distancia.</span></h2>
+    </div>
+    <div>
+      <div class="svc" data-reveal>
+        <div class="svc-in">
+          <div class="icon"><svg viewBox="0 0 48 48"><path d="M24 4 6 11v11c0 12 8 20 18 22 10-2 18-10 18-22V11L24 4Z"/><path d="M16 24l6 6 12-13"/></svg></div>
+          <div class="s-body">
+            <div class="s-top"><span class="num">01</span><h3>Cuido personalizado</h3><span class="dia"></span></div>
+            <p>Personal capacitado en primeros auxilios y manejo infantil, pensado para la tranquilidad de cada padre, y comunicación constante durante todo el evento.</p>
+          </div>
+        </div>
+      </div>
+      <div class="svc d1" data-reveal>
+        <div class="svc-in">
+          <div class="icon"><svg viewBox="0 0 48 48"><path d="M8 34c4-14 8-22 16-22s12 8 16 22"/><circle cx="24" cy="10" r="4"/><path d="M8 34h32"/></svg></div>
+          <div class="s-body">
+            <div class="s-top"><span class="num">02</span><h3>Entretenimiento temático</h3><span class="dia"></span></div>
+            <p>Actividades, arte y animación diseñados a la medida del tono de tu evento y de la edad de los invitados.</p>
+          </div>
+        </div>
+      </div>
+      <div class="svc d2" data-reveal>
+        <div class="svc-in">
+          <div class="icon"><svg viewBox="0 0 48 48"><circle cx="17" cy="24" r="9"/><circle cx="31" cy="24" r="9"/></svg></div>
+          <div class="s-body">
+            <div class="s-top"><span class="num">03</span><h3>Coordinación integral</h3><span class="dia"></span></div>
+            <p>Trabajamos de la mano con wedding planners, agencias de eventos y venues, acoplando horarios y logística de forma discreta con el itinerario de la celebración.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PARA QUIÉN ===================== -->
+<section class="audience pad" id="para-quien">
+  <div class="wrap">
+    <div class="audience-head">
+      <p class="eyebrow center" data-reveal>pensado para</p>
+      <h2 class="mask" style="margin-top:1.2rem"><span>Un aliado silencioso detrás de cada gran evento</span></h2>
+    </div>
+    <div class="audience-row">
+      <div class="aud-item" data-reveal>
+        <span class="num">I</span>
+        <h3>Wedding planners &amp; agencias</h3>
+        <p>Un servicio más para ofrecer a sus clientes, sin sumar carga operativa a su equipo el día del evento.</p>
+      </div>
+      <div class="aud-item d1" data-reveal>
+        <span class="num">II</span>
+        <h3>Parejas y familias</h3>
+        <p>Anfitriones que quieren una celebración sofisticada, sin dejar fuera a los invitados con hijos.</p>
+      </div>
+      <div class="aud-item d2" data-reveal>
+        <span class="num">III</span>
+        <h3>Hoteles y venues</h3>
+        <p>Un valor agregado para espacios que reciben bodas y eventos sociales de alto nivel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXPERIENCIA ===================== -->
+<section class="gallery pad" id="experiencia">
+  <div class="wrap">
+    <div class="gallery-head">
+      <p class="eyebrow" data-reveal>la experiencia</p>
+      <h2 class="mask" style="margin-top:1.2rem"><span>Entretenimiento con el mismo esmero que el resto de la celebración</span></h2>
+    </div>
+    <div class="moodgrid">
+      <div class="mood" data-clip>
+        <div class="frame"><div class="plx" data-plx="7"><img src="imgs/experiencia-taller.jpg" alt="Niños pintando en un taller creativo al aire libre" loading="lazy"></div></div>
+        <p class="cap">Taller creativo</p>
+      </div>
+      <div class="mood" data-clip>
+        <div class="frame"><div class="plx" data-plx="7"><img src="imgs/experiencia-juegos.jpg" alt="Niños participando en juegos y dinámicas grupales en un jardín decorado para fiesta" loading="lazy"></div></div>
+        <p class="cap">Juegos y dinámicas</p>
+      </div>
+      <div class="mood" data-clip>
+        <div class="frame"><div class="plx" data-plx="7"><img src="imgs/experiencia-cuido.jpg" alt="Cuidadora acompañando a los niños en una actividad de manualidades" loading="lazy"></div></div>
+        <p class="cap">Cuido y acompañamiento</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MANIFIESTO ===================== -->
+<section class="manifesto pad">
+  <div class="wrap">
+    <span class="mark" data-reveal>✦</span>
+    <p data-words>Creemos que ninguna familia debería quedarse fuera de una celebración por sus hijos. Creemos en fiestas completas, para todas las edades, cada una a su manera.</p>
+    <div class="ornament" data-reveal><span class="oline"></span><span class="odiamond"></span><span class="oline"></span></div>
+  </div>
+</section>
+
+<!-- ===================== CTA / CONTACTO ===================== -->
+<section class="cta pad" id="contacto">
+  <div class="wrap">
+    <div class="cta-frame" data-reveal>
+      <i class="cnr c1"></i><i class="cnr c2"></i><i class="cnr c3"></i><i class="cnr c4"></i>
+      <p class="eyebrow center">conversemos</p>
+      <h2 class="mask" style="margin-top:1.2rem"><span>Hablemos de tu próximo evento.</span></h2>
+      <p>Cuéntanos la fecha, el lugar y cuántos pequeños invitados tendrás. Diseñamos la experiencia contigo, de principio a fin.</p>
+      <a href="https://wa.me/50689688368" target="_blank" rel="noopener" class="btn btn-solid"><span>Escríbenos por WhatsApp</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="foot-row" data-reveal>
+    <div class="logo">
+      <span class="mark"></span>
+      <span class="word">Kids Party Care<small>cuido &amp; entretenimiento</small></span>
+    </div>
+    <div class="foot-links">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#para-quien">Para quién</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+  <div class="foot-word mask" aria-hidden="true"><span>Kids Party Care</span></div>
+  <div class="foot-bottom" data-reveal>
+    <span>© 2026 Kids Party Care. Cuido y entretenimiento infantil para eventos exclusivos.</span>
+    <span>Costa Rica</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const html = document.documentElement;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(pointer: fine)').matches;
+  if (reduced) html.classList.add('no-motion');
+  if (fine && !reduced) html.classList.add('fine');
+
+  /* ---------- preloader + entrada del hero ----------
+     Timeline (más larga, con pausa elegante tras la barra):
+       0.0s   aparece el ✦ y el logotipo
+       0.5s   la línea dorada empieza a llenarse (2.1s)
+       2.6s   barra completa + breve pausa
+       2.9s   las cortinas se abren (1.05s)
+       3.35s  arranca la intro del hero (se solapa con la cortina)
+  */
+  if (reduced) {
+    html.classList.add('loaded','ready');
+  } else {
+    setTimeout(() => html.classList.add('loaded'), 2900);
+    setTimeout(() => html.classList.add('ready'), 3350);
+  }
+  // red de seguridad: nunca dejar la página bloqueada
+  setTimeout(() => { html.classList.add('loaded','ready'); }, 7000);
+
+  /* ---------- nav ---------- */
+  const nav = document.getElementById('mainNav');
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  const onScrollNav = () => nav.classList.toggle('scrolled', window.scrollY > 30);
+  addEventListener('scroll', onScrollNav, {passive:true});
+  onScrollNav();
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('active', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.classList.remove('active');
+  }));
+
+  /* ---------- manifiesto: dividir en palabras ---------- */
+  const mp = document.querySelector('[data-words]');
+  if (mp) {
+    const words = mp.textContent.trim().split(/\s+/);
+    mp.innerHTML = words.map((w,i) => `<span class="w" style="transition-delay:${i*38}ms">${w}</span>`).join(' ');
+  }
+
+  /* ---------- reveals (IntersectionObserver) ---------- */
+  const targets = document.querySelectorAll('[data-reveal], .mask, [data-clip], [data-words]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) { en.target.classList.add('in-view'); io.unobserve(en.target); }
+      });
+    }, {threshold:.15, rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(el => io.observe(el));
+  } else {
+    targets.forEach(el => el.classList.add('in-view'));
+  }
+
+  /* ---------- bucle de animación (cortina, parallax, cursor) ---------- */
+  if (!reduced) {
+    const scene  = document.getElementById('curtainScene');
+    const pL     = document.getElementById('panelLeft');
+    const pR     = document.getElementById('panelRight');
+    const emblem = document.getElementById('curtainEmblem');
+    const post   = document.getElementById('curtainPost');
+    const heroInner = document.getElementById('heroInner');
+    const heroDeco  = document.getElementById('heroDeco');
+    const plx = [...document.querySelectorAll('[data-plx]')].map(el => ({el, frame: el.closest('.frame'), cur: 0}));
+
+    const clamp = (v,a,b) => Math.min(b, Math.max(a,v));
+    const lerp  = (a,b,t) => a + (b-a)*t;
+    const smooth = t => t*t*(3-2*t);
+    let cur = 0;
+
+    /* cursor personalizado:
+       solo se oculta el cursor nativo cuando hay movimiento real
+       de ratón (nunca con dedo táctil). Si el mouse sale de la
+       ventana, se restaura el cursor del sistema. */
+    const dot = document.querySelector('.cursor-dot');
+    const ring = document.querySelector('.cursor-ring');
+    let mx = innerWidth/2, my = innerHeight/2, rx = mx, ry = my, rs = 1, rTarget = 1, cursorOn = false;
+    const activateCursor = () => {
+      if (!cursorOn) { cursorOn = true; html.classList.add('cursor-on'); }
+    };
+    const deactivateCursor = () => {
+      cursorOn = false; html.classList.remove('cursor-on');
+    };
+    if (fine) {
+      addEventListener('pointermove', e => {
+        if (e.pointerType === 'touch') return;   // dedo ≠ ratón
+        mx = e.clientX; my = e.clientY;
+        activateCursor();
+      }, {passive:true});
+      document.addEventListener('mouseleave', deactivateCursor);
+      document.addEventListener('mouseover', e => {
+        rTarget = e.target.closest('a,button,.mood') ? 1.6 : 1;
+        ring.classList.toggle('grow', rTarget > 1);
+      });
+    }
+
+    const frame = () => {
+      /* cortina teatral: progreso suavizado con lerp */
+      const r = scene.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < innerHeight) {
+        const total = scene.offsetHeight - innerHeight;
+        const target = smooth(clamp(-r.top / total, 0, 1));
+        cur = Math.abs(cur - target) < .0004 ? target : lerp(cur, target, .11);
+        pL.style.transform = `translate3d(${-cur*100}%,0,0)`;
+        pR.style.transform = `translate3d(${cur*100}%,0,0)`;
+        emblem.style.opacity = clamp(1 - cur*2.6, 0, 1).toFixed(3);
+        emblem.style.transform = `translate3d(0,${(-cur*36).toFixed(1)}px,0)`;
+        post.style.opacity = (clamp((cur-.42)/.18,0,1) * clamp(1-(cur-.72)/.2,0,1)).toFixed(3);
+      }
+      /* salida del hero por parallax + desvanecido */
+      const sy = scrollY;
+      if (sy < innerHeight * 1.2) {
+        heroInner.style.transform = `translate3d(0,${(sy*.16).toFixed(1)}px,0)`;
+        heroInner.style.opacity = clamp(1 - sy/(innerHeight*.78), 0, 1).toFixed(3);
+        heroDeco.style.transform = `translate3d(0,${(sy*-.08).toFixed(1)}px,0)`;
+      }
+      /* parallax interno de las fotos de galería */
+      plx.forEach(o => {
+        const fr = o.frame.getBoundingClientRect();
+        if (fr.bottom < 0 || fr.top > innerHeight) return;
+        const p = clamp((fr.top + fr.height/2 - innerHeight/2) / (innerHeight/2 + fr.height/2), -1, 1);
+        o.cur = lerp(o.cur, p*7, .09);
+        o.el.style.transform = `translate3d(0,${o.cur.toFixed(2)}%,0)`;
+      });
+      /* cursor: punto inmediato, anillo con inercia */
+      if (fine && cursorOn) {
+        rx = lerp(rx, mx, .18); ry = lerp(ry, my, .18); rs = lerp(rs, rTarget, .14);
+        dot.style.transform = `translate3d(${mx}px,${my}px,0)`;
+        ring.style.transform = `translate3d(${rx}px,${ry}px,0) scale(${rs.toFixed(3)})`;
+      }
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  }
+})();
+</script>
+
+</body>
+</html>
